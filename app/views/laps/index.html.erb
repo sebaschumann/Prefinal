@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Laps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= link_to "Number", laps_path(:sort => true, :by => "number", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th>Pilot</th>
+  <th>Race</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @laps.each do |lap| %>
+      <tr>
+        <td><%= lap.number %></td>
+        <td><%= lap.pilot.full_name %></td>
+        <td><%= lap.race.name %></td>
+
+        <td><%= lap.pilot_id %></td>
+        <td><%= link_to 'Show', lap %></td>
+        <td><%= link_to 'Edit', edit_lap_path(lap) %></td>
+        <td><%= link_to 'Destroy', lap, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lap', new_lap_path %>

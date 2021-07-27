@@ -1,0 +1,37 @@
+<%= form_with(model: sujeto) do |form| %>
+  <% if sujeto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sujeto.errors.count, "error") %> prohibited this sujeto from being saved:</h2>
+
+      <ul>
+        <% sujeto.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :document_number %>
+    <%= form.number_field :document_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :birthday %>
+    <%= form.datetime_select :birthday %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

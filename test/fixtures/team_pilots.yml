@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pilot: one
+  team: one
+  championship: one
+
+two:
+  pilot: two
+  team: two
+  championship: two

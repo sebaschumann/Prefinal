@@ -1,0 +1,32 @@
+<%= form_with(model: team_pilot) do |form| %>
+  <% if team_pilot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(team_pilot.errors.count, "error") %> prohibited this team_pilot from being saved:</h2>
+
+      <ul>
+        <% team_pilot.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :pilot_id %>
+    <%= form.collection_select(:pilot_id, Pilot.all, :id, :full_name) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :team_id %>
+    <%= form.collection_select(:team_id, Team.all, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :championship_id %>
+    <%= form.collection_select(:championship_id, Championship.all, :id, :championship) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
