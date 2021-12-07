@@ -1,2 +1,0 @@
-class Circuit < ApplicationRecord
-end
