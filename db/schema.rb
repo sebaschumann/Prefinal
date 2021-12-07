@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_160912) do
+ActiveRecord::Schema.define(version: 2021_12_07_210112) do
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "name"
+    t.datetime "date_from"
+    t.datetime "date_to"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "bottles", force: :cascade do |t|
     t.string "name"
@@ -46,6 +54,17 @@ ActiveRecord::Schema.define(version: 2021_12_07_160912) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["pilot_id"], name: "index_laps_on_pilot_id"
     t.index ["race_id"], name: "index_laps_on_race_id"
+  end
+
+  create_table "movements", force: :cascade do |t|
+    t.datetime "movement_date"
+    t.string "movement_type"
+    t.string "description"
+    t.integer "amount"
+    t.integer "account_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_movements_on_account_id"
   end
 
   create_table "pilot_teams", force: :cascade do |t|
@@ -119,6 +138,7 @@ ActiveRecord::Schema.define(version: 2021_12_07_160912) do
 
   add_foreign_key "laps", "pilots"
   add_foreign_key "laps", "races"
+  add_foreign_key "movements", "accounts"
   add_foreign_key "pilot_teams", "championships"
   add_foreign_key "pilot_teams", "pilots"
   add_foreign_key "pilot_teams", "teams"
